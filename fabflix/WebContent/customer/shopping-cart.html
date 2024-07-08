@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Style the autocomplete table -->
+  <link rel="stylesheet" href="autocomplete.css">
+  <title>Fabflix Shopping Cart</title>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      background-color: #f8f9fa; /* Light grey background for a modern look */
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .navbar {
+      border-bottom: 1px solid #e0e0e0; /* Adds a slight separation from content */
+    }
+
+    .title-container {
+      text-align: center; /* Centers the title */
+      margin: 20px 0; /* Adds vertical spacing */
+    }
+
+    .table {
+      background-color: white; /* Ensures the table is distinctly visible */
+    }
+
+    footer {
+      border-top: 1px solid #e0e0e0; /* Adds definition to the footer */
+    }
+  </style>
+</head>
+<body class="bg-light">
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand" href="index.html">Fabflix</a>
+    <div class="navbar-collapse collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button id="movies-button" class="btn btn-outline-success" type="button">Movies</button>
+        </li>
+        <li class="nav-item">
+          <form id="search-form" class="form-inline">
+            <input id="search-title" class="form-control me-2" type="search" placeholder="Title" aria-label="Search">
+            <input id="search-year" class="form-control me-2" type="search" placeholder="Year" aria-label="Search">
+            <input id="search-director" class="form-control me-2" type="search" placeholder="Director"
+                   aria-label="Search">
+            <input id="search-star" class="form-control me-2" type="search" placeholder="Star" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <form id="full-text-search-form" class="form-inline">
+            <input id="full-text-search-title" class="form-control me-2" type="search" placeholder="Full-Text Search"
+                   aria-label="Full-Text Search">
+            <button class="btn btn-outline-success" type="submit">Full-Text Search</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-auto">
+      <a class="btn btn-outline-success" href="shopping-cart.html">Checkout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Title Section -->
+<div class="title-container">
+  <h1>Shopping Cart</h1>
+</div>
+
+<div>
+  <table id="shopping-cart-table" class="table table-striped">
+    <!-- Create a table header -->
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Quantity</th>
+      <th>Delete</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody id="shopping-cart-table-body"></tbody>
+  </table>
+</div>
+
+<div class="table table-striped">
+  <table>
+    <tr>
+      <td>
+        <button id="proceed-to-payment-button" class="btn btn-outline-success" type="button">
+          Proceed to Payment
+        </button>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <div class="ml-auto p-2" id="total-price"></div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- Footer -->
+<footer class="py-3 my-4 bg-light text-center">
+  <p class="text-muted">© 2024 CS122B @ UC Irvine All Rights Reserved</p>
+</footer>
+
+<!-- include your own JS file -->
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js"></script>
+<script src="autocomplete.js"></script>
+
+<script type='text/javascript' src='shopping-cart.js'></script>
+</body>
+</html>

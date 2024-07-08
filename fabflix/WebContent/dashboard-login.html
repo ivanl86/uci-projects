@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login to Dashboard</title>
+  <style>
+    /* CSS to style the body, container, and form for centering */
+    html, body {
+      height: 100%; /* Full height for the container */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+      display: flex; /* Enables flexbox */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      background: linear-gradient(to top, #330867, #30cfd0);
+      position: relative;
+    }
+
+    .login-container {
+      text-align: center; /* Center text for the title */
+      width: 300px; /* Fixed width for the login form and title */
+      padding: 20px;
+      border: 1px solid #95b0f1; /* Border around the container */
+      background: rgb(255, 255, 255); /* Background color for the container */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Drop shadow for 3D effect */
+    }
+
+    #login_form {
+      margin-top: 20px; /* Space between title and form */
+    }
+
+    .form-input {
+      margin-top: 10px; /* Space between inputs */
+      display: flex; /* Align label and input horizontally */
+      justify-content: space-between; /* Space distribution between label and input */
+      align-items: center;
+    }
+
+    label {
+      flex: 1; /* Allows label to take necessary space */
+      margin-right: 10px; /* Space between label and input */
+    }
+
+    input[type="text"], input[type="password"] {
+      flex: 2; /* Allows input to grow and fill available space */
+    }
+
+    input[type="submit"] {
+      width: 100%; /* Ensures the submit button fills the form */
+      margin-top: 20px; /* Space above the submit button */
+    }
+
+    #login_error_message {
+      color: red; /* Color for error messages */
+      margin-top: 20px; /* Space above the error message */
+    }
+
+    .fablix-logo {
+      position: absolute;
+      top: 10px; /* Adjust top position to align with the top edge */
+      left: 10px; /* Adjust left position to align with the left edge */
+      width: 150px; /* Set width of logo */
+    }
+
+    .g-recaptcha {
+      height: initial !important;
+      width: initial !important;
+    }
+  </style>
+</head>
+<body>
+<!--<img src="Fablix_logo.png" alt="Fablix Logo" class="fablix-logo">-->
+<div class="login-container">
+  <h2>Employee login</h2>
+  <form id="login-form" method="post" action="#">
+    <div class="form-input">
+      <label><b>Username</b></label>
+      <input name="username" placeholder="Enter Employee Username" type="text">
+    </div>
+    <div class="form-input">
+      <label><b>Password</b></label>
+      <input name="password" placeholder="Enter Password" type="password">
+    </div>
+    <br>
+<!--    <div class="g-recaptcha" data-sitekey="6LdrdswpAAAAAFGSeXnj7JXJRdeq6psIWCcwECxm"></div>-->
+    <input type="submit" value="Login">
+  </form>
+  <br>
+  <div id="login-message"></div>
+</div>
+
+<!-- Include Google reCAPTCHA library -->
+<!--<script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>-->
+<!-- Include jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Include our own JS file -->
+<script src="dashboard-login.js"></script>
+</body>
+</html>

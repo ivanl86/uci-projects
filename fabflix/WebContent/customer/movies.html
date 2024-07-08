@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Style the autocomplete table -->
+  <link rel="stylesheet" href="autocomplete.css">
+
+  <title>The Top Movie List</title>
+  <style>
+    /* Custom styles */
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+  </style>
+</head>
+<body class="bg-light">
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand" href="index.html">Fabflix</a>
+    <div class="navbar-collapse collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button id="movies-button" class="btn btn-outline-success" type="button">Movies</button>
+        </li>
+        <li class="nav-item">
+          <form id="search-form" class="form-inline">
+            <input id="search-title" class="form-control me-2" type="search" placeholder="Title" aria-label="Search">
+            <input id="search-year" class="form-control me-2" type="search" placeholder="Year" aria-label="Search">
+            <input id="search-director" class="form-control me-2" type="search" placeholder="Director"
+                   aria-label="Search">
+            <input id="search-star" class="form-control me-2" type="search" placeholder="Star" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <form id="full-text-search-form" class="form-inline">
+            <input id="full-text-search-title" class="form-control me-2" type="search" placeholder="Full-Text Search"
+                   aria-label="Full-Text Search">
+            <button class="btn btn-outline-success" type="submit">Full-Text Search</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-auto">
+      <a class="btn btn-outline-success" href="shopping-cart.html">Checkout</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4 mb-4">
+  <div class="row mb-3">
+    <div class="col text-center">
+      <h2 class="font-weight-bold">Results</h2>
+    </div>
+  </div>
+  <form id="display-option-form" class="row justify-content-center">
+    <div class="col-md-auto mb-2">
+      <label for="movies-per-page" class="mr-2">Per Page</label>
+      <select id="movies-per-page" class="custom-select">
+        <option value="10">10</option>
+        <option value="25" selected>25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+    <div class="col-md-auto mb-2">
+      <label for="sort-by" class="mr-2">Sort By</label>
+      <select id="sort-by" class="custom-select">
+        <option value="title-asc-rating-asc" selected>title asc rating asc</option>
+        <option value="title-asc-rating-desc">title asc rating desc</option>
+        <option value="title-desc-rating-asc">title desc rating asc</option>
+        <option value="title-desc-rating-desc">title desc rating desc</option>
+        <option value="rating-asc-title-asc">rating asc title asc</option>
+        <option value="rating-asc-title-desc">rating asc title desc</option>
+        <option value="rating-desc-title-asc">rating desc title asc</option>
+        <option value="rating-desc-title-desc">rating desc title desc</option>
+      </select>
+    </div>
+    <div class="col-md-auto">
+      <button type="submit" class="btn btn-primary" style="margin-top: 2rem;">Apply</button>
+    </div>
+  </form>
+</div>
+
+
+<!-- Id "star_table" is useful for jQuery to find the html element with id, class here is mapping to Bootstrap defined class CSS -->
+<table id="movie-table" class="table table-striped">
+  <!-- Create a table header -->
+  <thead>
+  <tr>
+    <!-- Titles of each column -->
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th>Genres</th>
+    <th>Stars</th>
+    <th>Rating</th>
+    <th>Cart</th>
+  </tr>
+  </thead>
+  <!-- Table body is left empty here, will be populated with the data retrieved with movies.js -->
+  <!-- Again, id "movie-table-body" is useful for jQuery to find this html element -->
+  <tbody id="movie-table-body"></tbody>
+</table>
+<!--</div>-->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <button id="previous-btn" class="page-link">Previous</button>
+    </li>
+    <li class="page-item">
+      <button id="next-btn" class="page-link">Next</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- Footer -->
+<footer class="py-3 my-4 bg-light text-center">
+  <p class="text-muted">© 2024 CS122B @ UC Irvine All Rights Reserved</p>
+</footer>
+
+<!-- Load jQuery and Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.11/jquery.autocomplete.min.js"></script>
+<!-- Load our own JS file -->
+<!-- The path is relative to movies.html, since these two files are in the same directory -->
+<!-- Note the url does not contain a "/" in the beginning, which means the url is relative to current path
+     otherwise the url is relative to the root path-->
+<script src="movies.js"></script>
+<script src="autocomplete.js"></script>
+
+</body>
+
+</html>
